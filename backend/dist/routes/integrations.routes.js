@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const integrations_controller_js_1 = require("../controllers/integrations.controller.js");
+const router = (0, express_1.Router)();
+router.get("/status", (req, res) => integrations_controller_js_1.integrationsController.getIntegrationStatus(req, res));
+router.get("/rxnav/search", (req, res) => integrations_controller_js_1.integrationsController.searchRxNav(req, res));
+router.get("/rxnav/rxcui/:rxcui", (req, res) => integrations_controller_js_1.integrationsController.getRxNormDetails(req, res));
+router.post("/fhir/sync-to-hapi", (req, res) => integrations_controller_js_1.integrationsController.syncPatientToHapi(req, res));
+exports.default = router;

@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const chemotherapy_controller_js_1 = require("../controllers/chemotherapy.controller.js");
+const router = (0, express_1.Router)();
+router.get("/patients", (req, res) => chemotherapy_controller_js_1.chemotherapyController.listPatients(req, res));
+router.get("/patients/:patientId", (req, res) => chemotherapy_controller_js_1.chemotherapyController.getPatient(req, res));
+router.get("/patients/:patientId/safety-check", (req, res) => chemotherapy_controller_js_1.chemotherapyController.getSafetyAssessment(req, res));
+router.post("/patients/:patientId/override", (req, res) => chemotherapy_controller_js_1.chemotherapyController.overrideSafetyHold(req, res));
+exports.default = router;
